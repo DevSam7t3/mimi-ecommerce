@@ -1,7 +1,6 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment,  useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { IoMdClose } from 'react-icons/io';
-import { StateContext } from '@context';
 
 const products = [
   {
