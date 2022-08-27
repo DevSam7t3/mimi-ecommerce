@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { GetServerSideProps } from 'next';
 
 import { Iproduct } from '@typings';
-import { StateContext } from '@context';
+// import { StateContext } from '@context';
 
 interface Props {
   product: Iproduct;
