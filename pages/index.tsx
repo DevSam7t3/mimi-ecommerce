@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
 
-import { ProductCard } from '@components';
-import { Iproduct } from '@typings';
+import { ProductCard } from "@components";
+import { Iproduct } from "@typings";
 
 interface Iprops {
   products: Iproduct[];
@@ -13,13 +13,13 @@ const Home: NextPage<Iprops> = ({ products }) => {
   return (
     <>
       <Head>
-        <title>mimi - Ecommerce</title>
+        <title>DIVA - Ecommerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mt-20 mx-auto max-w-7xl  px-4 sm:mt-28 sm:px-6 md:mt-36 lg:mt-20 lg:px-8 xl:mt-28">
         <div className="text-center">
           <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl sm:tracking-tight md:text-6xl md:tracking-tight">
-            <span className="block xl:inline">Data to enrich your</span>{' '}
+            <span className="block xl:inline">Data to enrich your</span>{" "}
             <span className="block text-indigo-600 xl:inline">
               online business
             </span>
@@ -57,7 +57,7 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const products = await fetch(
-    'https://fakestoreapi.com/products?limit=6'
+    "https://fakestoreapi.com/products?limit=6"
   ).then((res) => res.json());
 
   return {

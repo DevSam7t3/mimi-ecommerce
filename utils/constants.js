@@ -1,0 +1,2 @@
+export const SHOW_CART_TRUE = "SHOW_CART_TRUE";
+export const SHOW_CART_FALSE = "SHOW_CART_FALSE";

@@ -1,17 +1,30 @@
-import Link from 'next/link';
-import { FC, Fragment } from 'react';
-import CartIcon from '../icons/cartIcon';
-import { Popover, Transition } from '@headlessui/react';
-import { BiMenuAltRight } from 'react-icons/bi';
+import Link from "next/link";
+import { Fragment, useContext } from "react";
+import CartIcon from "../icons/cartIcon";
+import { Popover, Transition } from "@headlessui/react";
+import { BiMenuAltRight } from "react-icons/bi";
+import { Context } from "@context";
+import { SHOW_CART_FALSE, SHOW_CART_TRUE } from "@utils/constants";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'All Products', href: '/products' },
-  { name: 'Categories', href: '/categories' },
-  { name: 'Contact Us', href: '/contact' },
+  { name: "Home", href: "/" },
+  { name: "All Products", href: "/products" },
+  { name: "Categories", href: "/categories" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
-const Header: FC = () => {
+const Header = () => {
+  const { state, dispatch } = useContext(Context);
+  const { showCart } = state;
+
+  const openCart = () => {
+    dispatch({ type: SHOW_CART_TRUE });
+  };
+
+  const closeCart = () => {
+    dispatch({ type: SHOW_CART_FALSE });
+  };
+
   return (
     <Popover className="fixed top-0 z-50 ">
       <div className="relative shadow-sm pt-6 px-4 w-screen bg-white sm:px-6 lg:px-8">
@@ -21,7 +34,7 @@ const Header: FC = () => {
         >
           <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
             <div className="flex items-center justify-between w-full md:w-auto">
-              <Link href={'/'}>
+              <Link href={"/"}>
                 <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                   <span className="sr-only">Workflow</span>
                   <span className="ml-3 text-xl font-bold text-primary">
@@ -33,6 +46,7 @@ const Header: FC = () => {
                 <button
                   type="button"
                   className="font-medium text-gray-700 hover:text-gray-900 mr-1"
+                  onClick={openCart}
                 >
                   <CartIcon />
                 </button>
@@ -55,6 +69,7 @@ const Header: FC = () => {
               <button
                 type="button"
                 className="font-medium text-gray-500 hover:text-gray-900 mr-1"
+                onClick={openCart}
               >
                 <CartIcon />
               </button>
@@ -79,7 +94,7 @@ const Header: FC = () => {
           <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="px-5 pt-4 flex items-center justify-between">
               <div>
-                <Link href={'/'}>
+                <Link href={"/"}>
                   <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                     <span className="ml-3 text-xl font-bold text-primary">
                       mimi.
